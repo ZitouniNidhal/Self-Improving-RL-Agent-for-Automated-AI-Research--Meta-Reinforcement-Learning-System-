@@ -1,11 +1,4 @@
-#!/usr/bin/env python
-"""
-Train the self-improving meta-RL agent.
 
-Example:
-    python scripts/train.py --generations 300 --tasks-per-generation 10 \
-        --config-dim 4 --log-dir runs/exp1
-"""
 import argparse
 import os
 import sys

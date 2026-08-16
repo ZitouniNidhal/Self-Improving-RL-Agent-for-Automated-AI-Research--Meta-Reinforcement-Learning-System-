@@ -1,12 +1,4 @@
-#!/usr/bin/env python
-"""
-Evaluate a trained checkpoint's few-shot adaptation performance on new,
-unseen research tasks.
 
-Example:
-    python scripts/evaluate.py --checkpoint runs/default/policy_final.npy \
-        --config-dim 4 --n-tasks 20
-"""
 import argparse
 import os
 import sys

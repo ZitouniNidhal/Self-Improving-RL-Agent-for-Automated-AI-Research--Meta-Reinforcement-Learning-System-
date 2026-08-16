@@ -1,11 +1,4 @@
-"""
-quickstart.py
 
-Smallest possible end-to-end example: run a few meta-training generations
-on tiny synthetic research tasks and print the improvement curve. Meant
-to run in a few seconds on a laptop with no GPU and no external
-dependencies beyond NumPy.
-"""
 import os
 import sys
 
