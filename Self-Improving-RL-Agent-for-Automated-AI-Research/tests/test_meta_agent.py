@@ -1,7 +1,8 @@
 import numpy as np
-import conftest  # noqa: F401
-from rl_agent.meta_agent import MetaRLAgent
+
+import conftest
 from environments.research_task_env import TaskDistribution
+from rl_agent.meta_agent import MetaRLAgent
 
 
 def test_adapt_to_task_returns_valid_result():
@@ -32,8 +33,6 @@ def test_meta_train_step_updates_policy():
 
 
 def test_meta_training_improves_over_generations():
-    """Weak sanity check: average best-reward across a small meta-training
-    run should trend upward (allow noise -> compare early vs late average)."""
     config_dim = 2
     state_dim = 2 + 2 * config_dim
     agent = MetaRLAgent(state_dim=state_dim, action_dim=config_dim, trials_per_task=10,
@@ -48,4 +47,4 @@ def test_meta_training_improves_over_generations():
 
     early = np.mean(scores[:5])
     late = np.mean(scores[-5:])
-    assert late >= early - 0.1  # loose bound: should not get dramatically worse
+    assert late >= early - 0.1

@@ -4,9 +4,9 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
+from environments.research_task_env import TaskDistribution
 from rl_agent.meta_agent import MetaRLAgent
 from rl_agent.self_improvement import SelfImprovementController
-from environments.research_task_env import TaskDistribution
 
 
 def main():
@@ -27,7 +27,6 @@ def main():
 
     print("\n" + controller.summary())
 
-    # Try the trained agent on a brand-new, never-before-seen task.
     holdout_env = TaskDistribution(config_dim=config_dim, seed=999).sample_task()
     result = agent.evaluate(holdout_env)
     print(f"\nHeld-out task best reward found in {len(result.episode_rewards)} trials: "

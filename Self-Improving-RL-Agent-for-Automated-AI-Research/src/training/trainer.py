@@ -1,20 +1,12 @@
-"""
-trainer.py
-
-Orchestrates the full training loop: sample a batch of research tasks,
-run a Reptile meta-update, let the self-improvement controller react to
-progress, periodically evaluate on held-out tasks, and log everything.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
+
 import numpy as np
 
+from environments.research_task_env import TaskDistribution
 from rl_agent.meta_agent import MetaRLAgent
 from rl_agent.self_improvement import SelfImprovementController
-from environments.research_task_env import TaskDistribution
 from utils.logger import ExperimentLogger
 
 
@@ -39,7 +31,6 @@ class Trainer:
     def __init__(self, config: TrainerConfig):
         self.config = config
         state_dim_probe_action_dim = config.config_dim
-        # state_dim depends on action_dim via EpisodicMemory.state_dim(); mirror that formula.
         state_dim = 2 + 2 * state_dim_probe_action_dim
 
         self.agent = MetaRLAgent(

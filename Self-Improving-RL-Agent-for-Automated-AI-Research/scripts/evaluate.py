@@ -7,8 +7,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from rl_agent.meta_agent import MetaRLAgent  # noqa: E402
-from environments.research_task_env import TaskDistribution  # noqa: E402
+from environments.research_task_env import TaskDistribution
+from rl_agent.meta_agent import MetaRLAgent
 
 
 def main():

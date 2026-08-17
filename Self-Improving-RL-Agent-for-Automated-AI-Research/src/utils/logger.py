@@ -1,19 +1,10 @@
-"""
-logger.py
-
-Minimal experiment logging utility: prints progress to the console, writes
-a CSV of metrics per generation, and can save/load policy checkpoints as
-.npy files (via the policy's flat-parameter (de)serialization). Kept
-dependency-free on purpose.
-"""
-
 from __future__ import annotations
 
 import csv
 import json
 import os
 import time
-from typing import Dict, Any
+from typing import Any, Dict
 
 import numpy as np
 
@@ -32,9 +23,6 @@ class ExperimentLogger:
         row = {"generation": generation, "elapsed_s": round(time.time() - self.start_time, 2), **metrics}
 
         if self._writer is None or any(k not in self._fieldnames for k in row):
-            # (Re)open the CSV with a superset of fieldnames whenever a new
-            # metric key shows up (e.g. eval metrics that only appear every
-            # `eval_every` generations). Existing rows are preserved.
             existing_rows = []
             if self._writer is not None:
                 self._csv_file.close()

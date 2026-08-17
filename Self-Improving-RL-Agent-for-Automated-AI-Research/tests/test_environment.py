@@ -1,5 +1,6 @@
 import numpy as np
-import conftest  # noqa: F401
+
+import conftest
 from environments.research_task_env import TaskDistribution
 
 
@@ -23,11 +24,6 @@ def test_reward_bounded():
 
 
 def test_optimum_beats_random():
-    """The recorded 'optimum' bump center should score well above the
-    *average* random configuration (it need not beat every single random
-    sample, since overlapping bumps can occasionally produce a slightly
-    higher point elsewhere -- this checks it's a genuinely strong point,
-    not the global argmax)."""
     dist = TaskDistribution(config_dim=3, seed=3, noise_std=0.0)
     env = dist.sample_task()
     best_center, _ = env.optimum()

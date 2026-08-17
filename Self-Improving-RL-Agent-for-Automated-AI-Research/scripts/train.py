@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from training.trainer import Trainer, TrainerConfig  # noqa: E402
+from training.trainer import Trainer, TrainerConfig
 
 
 def parse_args() -> TrainerConfig:

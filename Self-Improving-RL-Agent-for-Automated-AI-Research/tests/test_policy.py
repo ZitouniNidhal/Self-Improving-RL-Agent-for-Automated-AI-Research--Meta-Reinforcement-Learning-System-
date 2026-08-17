@@ -1,5 +1,6 @@
 import numpy as np
-import conftest  # noqa: F401
+
+import conftest
 from rl_agent.policy import PolicyNetwork
 
 
@@ -22,8 +23,6 @@ def test_flat_params_roundtrip():
 
 
 def test_gradients_change_log_prob_direction():
-    """Taking a gradient ascent step on log-prob toward a target action
-    should increase the log-probability of that action."""
     policy = PolicyNetwork(state_dim=4, action_dim=2, hidden_dim=6, seed=2)
     rng = np.random.default_rng(2)
     state = np.random.randn(4).astype(np.float32)
@@ -35,7 +34,6 @@ def test_gradients_change_log_prob_direction():
 
     _, _, cache2 = policy.act(state, rng, deterministic=True)
     mean_after = cache2["mean"]
-    # mean should have moved closer to the target action
     dist_before = np.linalg.norm(cache["mean"] - target_action)
     dist_after = np.linalg.norm(mean_after - target_action)
     assert dist_after <= dist_before + 1e-6

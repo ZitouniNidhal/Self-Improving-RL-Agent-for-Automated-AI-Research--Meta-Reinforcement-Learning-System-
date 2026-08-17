@@ -1,5 +1,6 @@
-import conftest  # noqa: F401
+import conftest
 from types import SimpleNamespace
+
 from rl_agent.self_improvement import SelfImprovementController
 
 
@@ -7,7 +8,6 @@ def test_plateau_decays_learning_rates():
     agent = SimpleNamespace(inner_lr=0.1, meta_lr=0.2)
     controller = SelfImprovementController(patience=2, min_delta=0.01)
 
-    # Flat scores -> should trigger a decay after `patience` no-improvement steps.
     for score in [0.5, 0.5, 0.5, 0.5]:
         controller.observe(agent, score)
 
